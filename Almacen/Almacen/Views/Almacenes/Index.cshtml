@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Almacen.Models.Almacenes>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.vchClave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vchNombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.vchClave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vchNombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.iIdAlmacen }) |
+            @Html.ActionLink("Details", "Details", new { id=item.iIdAlmacen }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.iIdAlmacen })
+        </td>
+    </tr>
+}
+
+</table>
