@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CURSONETModelStoreContainer" CdmEntityContainer="CURSONETEntities">
+    <EntitySetMapping Name="Almacenes">
+      <EntityTypeMapping TypeName="CURSONETModel.Almacenes">
+        <MappingFragment StoreEntitySet="Almacenes">
+          <ScalarProperty Name="iIdAlmacen" ColumnName="iIdAlmacen" />
+          <ScalarProperty Name="vchClave" ColumnName="vchClave" />
+          <ScalarProperty Name="vchNombre" ColumnName="vchNombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipos">
+      <EntityTypeMapping TypeName="CURSONETModel.Equipos">
+        <MappingFragment StoreEntitySet="Equipos">
+          <ScalarProperty Name="iIdEquipo" ColumnName="iIdEquipo" />
+          <ScalarProperty Name="iIdMarca" ColumnName="iIdMarca" />
+          <ScalarProperty Name="iIdModelo" ColumnName="iIdModelo" />
+          <ScalarProperty Name="vchNoSerie" ColumnName="vchNoSerie" />
+          <ScalarProperty Name="iExistencia" ColumnName="iExistencia" />
+          <ScalarProperty Name="iIdProveedor" ColumnName="iIdProveedor" />
+          <ScalarProperty Name="iIdAlmacen" ColumnName="iIdAlmacen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marcas">
+      <EntityTypeMapping TypeName="CURSONETModel.Marcas">
+        <MappingFragment StoreEntitySet="Marcas">
+          <ScalarProperty Name="iIdMarca" ColumnName="iIdMarca" />
+          <ScalarProperty Name="vchNombre" ColumnName="vchNombre" />
+          <ScalarProperty Name="vchClave" ColumnName="vchClave" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modelos">
+      <EntityTypeMapping TypeName="CURSONETModel.Modelos">
+        <MappingFragment StoreEntitySet="Modelos">
+          <ScalarProperty Name="iIdModelo" ColumnName="iIdModelo" />
+          <ScalarProperty Name="vchNombre" ColumnName="vchNombre" />
+          <ScalarProperty Name="vchClave" ColumnName="vchClave" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proveedores">
+      <EntityTypeMapping TypeName="CURSONETModel.Proveedores">
+        <MappingFragment StoreEntitySet="Proveedores">
+          <ScalarProperty Name="iIdProveedor" ColumnName="iIdProveedor" />
+          <ScalarProperty Name="vchNombre" ColumnName="vchNombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CURSONETModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Almacenes">
+    <Key>
+      <PropertyRef Name="iIdAlmacen" />
+    </Key>
+    <Property Name="iIdAlmacen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vchClave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="vchNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Equipos" Relationship="Self.FK_Equipos_Almacenes" FromRole="Almacenes" ToRole="Equipos" />
+  </EntityType>
+  <EntityType Name="Equipos">
+    <Key>
+      <PropertyRef Name="iIdEquipo" />
+    </Key>
+    <Property Name="iIdEquipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="iIdMarca" Type="Int32" Nullable="false" />
+    <Property Name="iIdModelo" Type="Int32" Nullable="false" />
+    <Property Name="vchNoSerie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="iExistencia" Type="Int32" />
+    <Property Name="iIdProveedor" Type="Int32" Nullable="false" />
+    <Property Name="iIdAlmacen" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Almacenes" Relationship="Self.FK_Equipos_Almacenes" FromRole="Equipos" ToRole="Almacenes" />
+    <NavigationProperty Name="Marcas" Relationship="Self.FK_Equipos_Marcas" FromRole="Equipos" ToRole="Marcas" />
+    <NavigationProperty Name="Modelos" Relationship="Self.FK_Equipos_Modelos" FromRole="Equipos" ToRole="Modelos" />
+    <NavigationProperty Name="Proveedores" Relationship="Self.FK_Equipos_Proveedores" FromRole="Equipos" ToRole="Proveedores" />
+  </EntityType>
+  <EntityType Name="Marcas">
+    <Key>
+      <PropertyRef Name="iIdMarca" />
+    </Key>
+    <Property Name="iIdMarca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vchNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="vchClave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Equipos" Relationship="Self.FK_Equipos_Marcas" FromRole="Marcas" ToRole="Equipos" />
+  </EntityType>
+  <EntityType Name="Modelos">
+    <Key>
+      <PropertyRef Name="iIdModelo" />
+    </Key>
+    <Property Name="iIdModelo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vchNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="vchClave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Equipos" Relationship="Self.FK_Equipos_Modelos" FromRole="Modelos" ToRole="Equipos" />
+  </EntityType>
+  <EntityType Name="Proveedores">
+    <Key>
+      <PropertyRef Name="iIdProveedor" />
+    </Key>
+    <Property Name="iIdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vchNombre" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Equipos" Relationship="Self.FK_Equipos_Proveedores" FromRole="Proveedores" ToRole="Equipos" />
+  </EntityType>
+  <Association Name="FK_Equipos_Almacenes">
+    <End Role="Almacenes" Type="Self.Almacenes" Multiplicity="1" />
+    <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Almacenes">
+        <PropertyRef Name="iIdAlmacen" />
+      </Principal>
+      <Dependent Role="Equipos">
+        <PropertyRef Name="iIdAlmacen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipos_Marcas">
+    <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+    <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Marcas">
+        <PropertyRef Name="iIdMarca" />
+      </Principal>
+      <Dependent Role="Equipos">
+        <PropertyRef Name="iIdMarca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipos_Modelos">
+    <End Role="Modelos" Type="Self.Modelos" Multiplicity="1" />
+    <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modelos">
+        <PropertyRef Name="iIdModelo" />
+      </Principal>
+      <Dependent Role="Equipos">
+        <PropertyRef Name="iIdModelo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipos_Proveedores">
+    <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+    <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="iIdProveedor" />
+      </Principal>
+      <Dependent Role="Equipos">
+        <PropertyRef Name="iIdProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CURSONETEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Almacenes" EntityType="Self.Almacenes" />
+    <EntitySet Name="Equipos" EntityType="Self.Equipos" />
+    <EntitySet Name="Marcas" EntityType="Self.Marcas" />
+    <EntitySet Name="Modelos" EntityType="Self.Modelos" />
+    <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
+    <AssociationSet Name="FK_Equipos_Almacenes" Association="Self.FK_Equipos_Almacenes">
+      <End Role="Almacenes" EntitySet="Almacenes" />
+      <End Role="Equipos" EntitySet="Equipos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipos_Marcas" Association="Self.FK_Equipos_Marcas">
+      <End Role="Marcas" EntitySet="Marcas" />
+      <End Role="Equipos" EntitySet="Equipos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipos_Modelos" Association="Self.FK_Equipos_Modelos">
+      <End Role="Modelos" EntitySet="Modelos" />
+      <End Role="Equipos" EntitySet="Equipos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipos_Proveedores" Association="Self.FK_Equipos_Proveedores">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="Equipos" EntitySet="Equipos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
