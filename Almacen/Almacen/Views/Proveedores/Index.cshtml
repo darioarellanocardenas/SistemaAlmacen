@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Almacen.Models.Proveedores>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="panel panel-primary" style="margin-top:20px;">
+    <div class="panel-heading">
+        <h1>Catálogo de Proveedores</h1>
+    </div>
+    <div class="panel-body">
+
+        <p class="pull-right">
+            @Html.ActionLink("Nuevo Proveedor", "Create", "Proveedores", new { id = "btn_nuevoproveedor" }, new { @class = "btn btn-success" })
+        </p>
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    Nombre Proveedor
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vchNombre)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.iIdProveedor }, new { @class = "btn btn-success" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.iIdProveedor }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.iIdProveedor }, new { @class = "btn btn-warning" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <div class="panel-footer"></div>
+</div>

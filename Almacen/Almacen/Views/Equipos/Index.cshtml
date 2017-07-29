@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Almacen.Models.Equipos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="panel panel-primary" style="margin-top:20px;">
+    <div class="panel-heading">
+        <h1>Catálogo de Equipos</h1>
+    </div>
+    <div class="panel-body">
+        <p class="pull-right">
+            @Html.ActionLink("Nuevo Equipo", "Create", "Equipos", new { id = "btn_nuevoequipo" }, new { @class = "btn btn-success" })
+        </p>
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    No. Serie
+                </th>
+                <th>
+                    Existencia
+                </th>
+                <th>
+                    Almacen
+                </th>
+                <th>
+                    Marca
+                </th>
+                <th>
+                    Modelo
+                </th>
+                <th>
+                    Proveedor
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vchNoSerie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.iExistencia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Almacenes.vchClave)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Marcas.vchNombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modelos.vchNombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Proveedores.vchNombre)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.iIdEquipo }, new { @class = "btn btn-success" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.iIdEquipo }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.iIdEquipo }, new { @class = "btn btn-warning" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <div class="panel-footer"></div>
+</div>

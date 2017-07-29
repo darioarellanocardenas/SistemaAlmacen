@@ -1,39 +1,46 @@
 ﻿@model IEnumerable<Almacen.Models.Almacenes>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Catálogo de Almacenes";
 }
 
-<h2>Index</h2>
+<div class="panel panel-primary" style="margin-top:20px;">
+    <div class="panel-heading">
+        <h1>Catálogo de Almacenes</h1>
+    </div>
+    <div class="panel-body">
+        <p class="pull-right">
+            @Html.ActionLink("Nuevo Almacen", "Create", "Almacenes", new { id = "btn_nuevoalmacen" }, new { @class = "btn btn-success" })
+        </p>
+        <table class="table  table-striped">
+            <tr>
+                <th>
+                    Clave
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th></th>
+            </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.vchClave)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.vchNombre)
-        </th>
-        <th></th>
-    </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vchClave)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vchNombre)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.iIdAlmacen }, new { @class = "btn btn-success" }) |
+                        @Html.ActionLink("Detalle", "Details", new { id = item.iIdAlmacen }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("Borrar", "Delete", new { id = item.iIdAlmacen }, new { @class = "btn btn-warning" })
+                    </td>
+                </tr>
+            }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.vchClave)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.vchNombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.iIdAlmacen }) |
-            @Html.ActionLink("Details", "Details", new { id=item.iIdAlmacen }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.iIdAlmacen })
-        </td>
-    </tr>
-}
-
-</table>
+        </table>
+    </div>
+    <div class="panel-footer"></div>
+</div>

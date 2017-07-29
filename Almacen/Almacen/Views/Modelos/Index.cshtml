@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Almacen.Models.Modelos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="panel panel-primary" style="margin-top:20px;">
+    <div class="panel-heading">
+        <h1 >Catálogo de Modelos</h1> 
+    </div>
+    <div class="panel-body">
+        <p class="pull-right">@Html.ActionLink("Nuevo Modelo", "Create","Modelos", new { id = "btn_nuevomodelo" }, new { @class = "btn btn-success" })</p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Clave
+                    </th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vchNombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vchClave)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.iIdModelo },new { @class= "btn btn-success" }) |
+                        @Html.ActionLink("Ver", "Details", new { id = item.iIdModelo }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("Borrar", "Delete", new { id = item.iIdModelo }, new { @class = "btn btn-warning" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+    <div class="panel-footer"></div>
+</div>

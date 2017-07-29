@@ -1,0 +1,66 @@
+﻿@model Almacen.Models.Equipos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Equipos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.vchNoSerie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vchNoSerie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.iExistencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iExistencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Almacenes.vchClave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Almacenes.vchClave)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marcas.vchNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marcas.vchNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelos.vchNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelos.vchNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Proveedores.vchNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Proveedores.vchNombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.iIdEquipo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

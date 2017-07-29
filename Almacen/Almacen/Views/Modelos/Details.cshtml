@@ -1,0 +1,34 @@
+﻿@model Almacen.Models.Modelos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Modelos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.vchNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vchNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vchClave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vchClave)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.iIdModelo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
